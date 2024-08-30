@@ -29,33 +29,3 @@ module.exports = {
     createTimeoutNotification,
     createTimeoutFailure
 };
-
-// const { MessageEmbed } = require('discord.js');
-
-// module.exports = {
-//     welcomeEmbed: (member) => {
-//         return new MessageEmbed()
-//             .setColor('#00FF00')
-//             .setTitle(`Welcome ${member.user.username}!`)
-//             .setDescription('We are happy to have you here!')
-//             .setThumbnail(member.user.displayAvatarURL())
-//             .setTimestamp();
-//     },
-
-//     timeoutWarningEmbed: (user) => {
-//         return new MessageEmbed()
-//             .setColor('#FF0000')
-//             .setTitle('Warning')
-//             .setDescription(`${user.username}, you are being annoying by repeatedly joining and leaving the voice channel.`)
-//             .addField('Final Warning', 'If you continue, you will be timed out.')
-//             .setTimestamp();
-//     },
-
-//     timeoutEmbed: (user, duration) => {
-//         return new MessageEmbed()
-//             .setColor('#FF0000')
-//             .setTitle('Timeout Issued')
-//             .setDescription(`${user.username} has been timed out for ${duration / 1000} seconds.`)
-//             .setTimestamp();
-//     }
-// };

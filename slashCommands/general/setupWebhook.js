@@ -10,8 +10,6 @@ module.exports = {
                   .setRequired(true)),
     async execute(interaction) {
         const channel = interaction.options.getChannel('channel');
-
-        // Assuming you have a function to set up the webhook
         try {
             // Your logic to create the webhook
             const webhook = await channel.createWebhook({

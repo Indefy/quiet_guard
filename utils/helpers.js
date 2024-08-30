@@ -13,12 +13,14 @@ function timeoutUser(member, guild) {
 
     if (userInfo.strikes >= 2) {
         // Timeout the user on the third strike
-        const duration = 600000 * (userInfo.strikes + 1); // 10 minutes for the first timeout, 20 for the second, etc.
+         // 10 minutes for the first timeout, 20 for the second, etc.
+        const duration = 600000 * (userInfo.strikes + 1);
         member.timeout(duration, 'Repeatedly joining and leaving voice channels')
             .then(() => {
                 const embed = createTimeoutNotification(member.user, duration);
                 guild.systemChannel.send({ embeds: [embed] });
-                userTimers.delete(userId); // Reset strikes after the timeout
+                // Reset strikes after the timeout
+                userTimers.delete(userId);
             })
             .catch(error => {
                 const embed = createTimeoutFailure(member.user, error.message);
@@ -33,13 +35,14 @@ function timeoutUser(member, guild) {
 
         // Clear the previous timer and set a new one
         if (userInfo.timer) clearTimeout(userInfo.timer);
-
-        const timeoutDuration = userInfo.strikes < 2 ? 300000 : 900000; // 5 minutes for strikes 1 and 2, 15 minutes for strike 3
+         // 5 minutes for strikes 1 and 2, 15 minutes for strike 3
+        const timeoutDuration = userInfo.strikes < 2 ? 300000 : 900000;
+         // Reset the strikes if the user behaves for the timeout duration
         userInfo.timer = setTimeout(() => {
-            userTimers.delete(userId); // Reset the strikes if the user behaves for the timeout duration
+            userTimers.delete(userId);
         }, timeoutDuration);
-
-        userTimers.set(userId, userInfo); // Update the map with the new timer
+        // Update the map with the new timer
+        userTimers.set(userId, userInfo);
     }
 }
 

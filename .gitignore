@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/simulate-strikes.js
+simulate-strikes.js
 
 # testing
 /coverage
@@ -22,3 +24,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+simulate-strikes.js

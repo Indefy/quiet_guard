@@ -17,7 +17,8 @@ module.exports = {
             .setDescription('Here are the commands you can use:')
             .addFields(commands)
             .addFields(
-                { name: '\u200B', value: '\u200B' },  // Blank field for spacing
+                // Blank field for spacing
+                { name: '\u200B', value: '\u200B' },  
                 { name: 'Tips for usage', value: 'Here are some tips for using the bot effectively:' },
                 { name: 'Tip 1', value: 'Use `/ping` to check if the bot is online and responsive.' },
                 { name: 'Tip 2', value: 'Use `/kick @username` to kick a user from the server.' },

@@ -13,25 +13,25 @@ const client = new Client({
 client.once('ready', async () => {
     console.log(`Logged in as ${client.user.tag}`);
 
-    const guild = client.guilds.cache.get('773206231480664075'); // Replace with your Guild ID
+    const guild = client.guilds.cache.get('773206231480664075');
     if (!guild) {
         console.error('Guild not found');
         return;
     }
 
-    const userId = '427239938728132609'; // Replace with the ID of the user you're simulating
+    const userId = '427239938728132609'; 
 
     console.log('Simulating user action 1');
-    trackUser(userId, guild);  // Simulate first action
+    trackUser(userId, guild);
 
     setTimeout(() => {
         console.log('Simulating user action 2');
-        trackUser(userId, guild);  // Simulate second action
+        trackUser(userId, guild);
     }, 3000);
 
     setTimeout(() => {
         console.log('Simulating user action 3');
-        trackUser(userId, guild);  // Simulate third action
+        trackUser(userId, guild);
     }, 6000);
 });
 

@@ -13,7 +13,7 @@ module.exports = {
 
         try {
             const member = await interaction.guild.members.fetch(target.id);
-            await member.timeout(null); // Remove the timeout
+            await member.timeout(null);
             await interaction.reply(`${target.username} has had their timeout removed.`);
         } catch (error) {
             console.error(error);

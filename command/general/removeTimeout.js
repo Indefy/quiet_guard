@@ -14,7 +14,7 @@ module.exports = {
         }
 
         try {
-            await member.timeout(null); // Removes the timeout
+            await member.timeout(null);
             message.reply(`${member.user.tag}'s timeout has been removed.`);
         } catch (error) {
             console.error(error);

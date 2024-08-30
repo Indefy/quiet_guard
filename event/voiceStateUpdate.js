@@ -28,7 +28,8 @@ function trackUser(userId, guild) {
         guild.systemChannel.send({ embeds: [embed] });
 
         // Reset the timer for the next potential strike
-        const timeoutDuration = userInfo.strikes < 2 ? 300000 : 900000; // 5 minutes for first 2 strikes, 15 minutes for the 3rd
+        // 5 minutes for first 2 strikes, 15 minutes for the 3rd
+        const timeoutDuration = userInfo.strikes < 2 ? 300000 : 900000; 
         setTimeout(() => {
             userTimers.delete(userId);
             console.log(`Timer reset for user ${userId}, strikes reset to 0`);
@@ -41,13 +42,15 @@ function timeoutUser(member, guild) {
     const userInfo = userTimers.get(userId) || { strikes: 0 };
 
     // Determine timeout duration based on strikes
-    const duration = 60000 * (userInfo.strikes + 1) * 10; // 10 minutes per strike
+    // 10 minutes per strike
+    const duration = 60000 * (userInfo.strikes + 1) * 10; 
 
     member.timeout(duration, 'Repeatedly joining and leaving voice channels')
         .then(() => {
             const embed = createTimeoutNotification(member.user, duration);
             guild.systemChannel.send({ embeds: [embed] });
-            userTimers.delete(userId); // Reset strikes after timeout
+            // Reset strikes after timeout
+            userTimers.delete(userId); 
         })
         .catch(error => {
             const embed = createTimeoutFailure(member.user, error.message);
@@ -56,20 +59,3 @@ function timeoutUser(member, guild) {
 }
 
 module.exports = { trackUser };
-
-// const { timeoutUser } = require('../utils/helpers');
-
-// module.exports = {
-//     name: 'voiceStateUpdate',
-//     execute(oldState, newState) {
-//         const userId = newState.id;
-
-//         if (!oldState.channelId && newState.channelId) {
-//             // User joined a voice channel
-//             timeoutUser(newState.member, oldState.guild);
-//         } else if (oldState.channelId && !newState.channelId) {
-//             // User left a voice channel
-//             console.log(`${newState.member.user.tag} left voice channel: ${oldState.channel.name}`);
-//         }
-//     },
-// };
